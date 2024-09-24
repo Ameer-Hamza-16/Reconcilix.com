@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="logo images" href="logo images/Untitled.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog-Reconcilix</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      .header {
+        background-color: #0d2335f6; /* Dark blue color */
+        color: white;
+        padding: 11px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header .contact-info {
+        font-size: 16px;
+        margin-left: 108px;
+      }
+
+      .header .contact-info i {
+        font-size: 13px;
+      }
+
+      .right-header {
+        margin-right: 126px;
+        display: flex;
+        align-items: center;
+      }
+
+      .follow-text {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+
+      .header .social-icons a {
+        color: white;
+        margin-left: 10px;
+        text-decoration: none;
+        font-size: 12.5px;
+        margin-right: 6px;
+      }
+
+      .header .social-icons a:hover {
+        color: red; /* Change color to red on hover */
+      }
+
+      @media (max-width: 600px) {
+        .header {
+          flex-direction: column;
+          text-align: center;
+        }
+        .header .social-icons {
+          margin-top: 10px;
+        }
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+      }
+      .navbar-links {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-left: 40px;
+      }
+      .navbar-links a {
+        text-decoration: none;
+        color: #4b4a4acb;
+        font-size: 17px;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      .navbar-links a:hover,
+      .navbar-links a:focus {
+        background-color: #28a745; /* Green background on hover/focus */
+        color: #ffffff; /* White text color on hover/focus */
+      }
+
+      /* Dropdown Card */
+      .services-dropdown {
+        position: relative;
+      }
+
+      .services-dropdown .services-card {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 300px; /* Adjust the width as needed */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      .services-dropdown:hover .services-card {
+        display: block;
+      }
+
+      .services-card ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .services-card li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: #333; /* Default text color */
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .services-card li:last-child {
+        border-bottom: none;
+      }
+
+      .services-card li a {
+        text-decoration: none; /* Remove underline from links */
+        color: #333; /* Default text color */
+        display: flex; /* Make sure text and icon are aligned */
+        align-items: center; /* Align icon and text */
+        width: 100%; /* Ensure the link spans the entire list item */
+      }
+
+      .services-card li a:hover,
+      .services-card li a:focus {
+        background-color: #28a745; /* Green background on hover/focus */
+        color: #ffffff; /* White text color on hover */
+      }
+
+      .services-card li a:hover .check-icon,
+      .services-card li a:focus .check-icon {
+        color: #ffffff; /* Change check icon color to white on hover/focus */
+      }
+      .check-icon {
+        color: #28a745; /* Green color for the check icon */
+        margin-right: 10px;
+      }
+
+      .navbar-select {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 16px;
+      }
+      /* Navbar Button */
+      .navbar-button {
+        display: flex;
+        align-items: center;
+        margin-right: 55px;
+      }
+
+      .navbar-button a {
+        text-decoration: none;
+        background-color: #28a745; /* Green color */
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .navbar-button a:hover {
+        background-color: red; /* Darker green for hover */
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .navbar-links {
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+        }
+        .navbar-links a {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+        .services-card {
+          width: 100%;
+        }
+
+        .services-card li {
+          width: 100%;
+        }
+        .navbar-select {
+          width: 100%;
+          margin-top: 10px;
+        }
+        .navbar-button {
+          margin-top: 10px;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      .background-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 62%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.5;
+      }
+
+      .img-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 62%;
+        background: #020236a6; /* Dark blue color with 50% opacity */
+        z-index: -1; /* Sits on top of the video but below the content */
+      }
+
+      .text1 h1 {
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        font-size: 32px;
+        margin-top: 115px;
+      }
+
+      /* Container styling */
+      .container80 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 90px;
+      }
+
+      /* Card styling */
+      .card80 {
+        background: #fff;
+        border-radius: 0px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 352px;
+        height: 500px;
+        margin: 10.5px;
+        transition: transform 0.3s eas;
+      }
+
+      .card80:hover {
+        transform: translateY(-5px);
+      }
+
+      .card80 a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Card image styling */
+      .card80 img {
+        width: 150%;
+        height: 230px;
+        transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+      }
+
+      .card80 img:hover {
+        transform: scale(1.1); /* Zoom effect on hover */
+      }
+
+      /* Date styling */
+      .card80 .dateing {
+        background: rgba(18, 180, 26, 0.904);
+        color: #fff;
+        padding: 5px 10px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        margin-left: 272px;
+        position: relative;
+        bottom: 40%;
+        right: 2%;
+        text-decoration: underline; /* Adds underline to the text */
+      }
+
+      /* Category styling */
+      .card80 .category80 {
+        margin: 5px;
+        font-size: 13px;
+        color: black;
+        margin-left: 38px;
+        text-decoration: underline; /* Adds underline to the text */
+      }
+
+      /* Title styling */
+      .card80 h2 {
+        color: rgba(0, 0, 0, 0.719);
+        font-size: 17.5px;
+        margin-left: 36px;
+        text-decoration: underline; /* Adds underline to the text */
+      }
+
+      /* Paragraph styling */
+      .card80 p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgba(0, 0, 0, 0.856);
+        margin-left: 36px;
+      }
+
+      /* Read more link styling */
+      .card80 .read-more80 {
+        color: #32a337e8;
+        font-weight: bold;
+        text-decoration: underline; /* Adds underline to the text */
+        margin-left: 36px;
+      }
+
+      .card80 .read-more80 i {
+        color: #32a337e8;
+        margin-left: 10px;
+        font-size: 15px;
+      }
+
+      .background-container {
+        background-color: rgb(226, 233, 235);
+        position: relative;
+        width: 100%;
+        height: 400px;
+      }
+      .background-container img {
+        width: 100%;
+        height: 138%;
+        object-fit: cover;
+        opacity: 1;
+      }
+      .background-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 138%;
+        background: #020236a6; /* Dark blue color with 50% opacity */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .background-content ul {
+        color: #28a745; /* Text color */
+        font-size: 80px; /* Font size */
+        list-style-type: none; /* Removes default bullets */
+        padding: 0; /* Remove default padding */
+      }
+
+      .background-content ul li {
+        position: relative; /* Positioning for the custom bullet */
+        padding-left: 30px; /* Space for the dot */
+      }
+
+      .background-content ul li::before {
+        content: ""; /* Creates a pseudo-element */
+        display: inline-block;
+        width: 12px; /* Bullet size */
+        height: 12px; /* Bullet size */
+        background-color: #28a745; /* Bullet color */
+        border-radius: 50%; /* Makes it a circle */
+        position: absolute;
+        left: -10%; /* Position it on the left */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+      }
+
+      .background-content h5 {
+        color: white; /* Text color */
+        font-size: 16px; /* Font size */
+        margin: 0; /* Remove default margin */
+        font-weight: 700;
+        margin-top: 10px;
+        margin-left: -29px;
+      }
+
+      .background-content h1 {
+        margin: 10px;
+        font-size: 2em;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 33px;
+        color: #fff;
+      }
+
+      .background-content p {
+        padding: 0 20px;
+        margin-bottom: 235px;
+        font-weight: 700;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      /* Basic styling and layout for the card */
+      .card {
+        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr 2fr; /* Adjust proportions as needed */
+        gap: 20px;
+        max-width: 1100px; /* Adjust as needed */
+        margin: 50px auto;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 0px;
+        margin-top: -10%;
+        position: relative; /* Added to position the card relative to its container */
+        z-index: 1; /* Ensures the card is above the background image */
+      }
+
+      .card-image img {
+        width: 155%;
+        height: 100%;
+      }
+
+      .card-form {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      .card-form h2 {
+        color: rgba(0, 0, 0, 0.89);
+        font-weight: bold;
+        text-align: center;
+        margin-top: 70px;
+        margin-left: 172px;
+      }
+      /* Responsive design adjustments */
+      @media (max-width: 768px) {
+        .card {
+          grid-template-columns: 1fr; /* Stack image and form vertically on small screens */
+        }
+
+        .card-image img {
+          width: 155%;
+        }
+      }
+
+      /* Form styling */
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 74%;
+        margin-left: 180px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-row input,
+      .form-row select,
+      .form-row textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid rgba(179, 179, 179, 0.863);
+        background-color: rgba(233, 232, 232, 0.938);
+        transition: border-color 0.3s ease;
+      }
+
+      .form-row input:hover,
+      .form-row select:hover,
+      .form-row textarea:hover {
+        border-color: green;
+      }
+
+      .form-row:first-child,
+      .form-row:nth-child(2) {
+        flex-direction: row;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: darkgreen;
+      }
+      /* Footer Style */
+      .footerkk {
+        position: relative; /* Required for the overlay to position correctly */
+        background-image: url("map web.jpeg"); /* Replace with your background image path */
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Overlay */
+      .footerkk::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #020236a6; /* Light navy blue color with opacity */
+        z-index: 1; /* Ensure the overlay is above the background image but below the text */
+      }
+
+      /* Footer Content */
+      .footer-contentkk {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2; /* Ensure content is above the overlay */
+      }
+
+      /* Rest of your CSS remains unchanged */
+      .footer-logokk img {
+        width: 26%;
+        height: 70px;
+        margin-top: 80px;
+        margin-left: 46px;
+      }
+
+      .footer-contentkk p {
+        margin: 20px 0;
+        color: white;
+        margin-left: 46.5px;
+        font-weight: 500;
+      }
+
+      .contact-infokk {
+        color: white;
+        margin-left: 46px;
+        font-weight: 500;
+      }
+
+      .contact-infokk a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .contact-itemkk {
+        margin: 10px 0;
+      }
+
+      .contact-itemkk i {
+        margin-right: 10px;
+      }
+
+      .footer-linkskk {
+        position: absolute;
+        left: 30%;
+        top: 18%;
+      }
+
+      .footer-linkskk h3 {
+        margin-left: 44px;
+        font-weight: 600;
+        font-size: 19px;
+        color: white;
+      }
+
+      .footer-linkskk ul {
+        list-style-type: none;
+      }
+
+      .footer-linkskk ul li {
+        margin: 5px 0;
+      }
+
+      .footer-linkskk ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      .footer-linkskk ul li a i {
+        margin-right: 10px;
+        margin: 13px;
+      }
+
+      .quick-linkskk {
+        position: absolute;
+        left: 51%;
+        top: 20%;
+      }
+
+      .quick-linkskk h3 {
+        margin-bottom: 10px;
+        margin-left: 44px;
+        font-weight: 600;
+        font-size: 19px;
+        color: white;
+      }
+
+      .quick-linkskk ul {
+        list-style-type: none;
+      }
+
+      .quick-linkskk ul li {
+        margin: 5px 0;
+      }
+
+      .quick-linkskk ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      .quick-linkskk ul li a i {
+        margin-right: 10px;
+        margin: 13px;
+      }
+
+      .newsletterkk {
+        text-align: right;
+        position: absolute;
+        left: 60%;
+        top: 21.5%;
+      }
+
+      .newsletterkk h3 {
+        margin-right: 167.5px;
+        font-weight: 600;
+        font-size: 19px;
+        color: white;
+      }
+
+      .newsletterkk p {
+        margin-bottom: 10px;
+        margin-left: 200px;
+      }
+
+      .emailkk {
+        position: relative;
+        display: inline-block;
+        margin-right: 14px;
+      }
+
+      .emailkk input[type="email"] {
+        padding: 10px;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 2px;
+        width: 248px;
+      }
+
+      .emailkk i {
+        position: absolute;
+        right: 15px;
+        top: 19.5%;
+        transform: translateY(-50%);
+        color: rgba(0, 0, 0, 0.849);
+      }
+
+      .emailkk input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 2px;
+        width: 247.5px;
+        background-color: rgba(83, 223, 83, 0.966);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .social-mediakk {
+        margin-bottom: 20px;
+        position: absolute;
+        left: 77%;
+        bottom: 13%;
+      }
+
+      .social-mediakk a {
+        color: rgba(0, 0, 0, 0.884);
+        background-color: white;
+        margin: 3px;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 50%;
+        padding: 8px;
+        transition: background-color 0.3s;
+      }
+
+      .social-mediakk a:hover {
+        background-color: rgba(83, 223, 83, 0.966);
+      }
+
+      .footer-bottomkk p {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      /* Error Message */
+      .error-message {
+        display: none;
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .footer-contentkk {
+          text-align: center;
+        }
+
+        .footer-logokk img {
+          max-width: 120px;
+        }
+
+        .contact-infokk {
+          margin-bottom: 10px;
+        }
+
+        .footer-linkskk ul {
+          padding: 0;
+        }
+
+        .footer-linkskk ul li {
+          margin: 5px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="contact-info">
+        <i class="fas fa-phone"></i>
+        <a
+          href="tel:(+92) 331 5365 669"
+          style="color: white; text-decoration: none"
+          >(+92) 331 5365 669</a
+        >
+      </div>
+      <div class="right-header">
+        <span class="follow-text">Follow us</span>
+        <div class="social-icons">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            title="Follow us on Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            title="Follow us on Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            title="Follow us on Twitter"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            title="Follow us on YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            title="Follow us on LinkedIn"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="navbar">
+      <div class="navbar-logo">
+        <a href="#img"
+          ><img
+            src="logo images\reconsilix-logo-300x72.png"
+            style="height: 73px; margin-left: 120px"
+        /></a>
+      </div>
+      <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="About.html">About Us</a>
+        <div class="services-dropdown">
+          <a href="#services">Services +</a>
+          <div class="services-card">
+            <ul>
+              <li>
+                <a href="#business-analytics"
+                  ><span class="check-icon">✔</span> Business Analytics</a
+                >
+              </li>
+              <li>
+                <a href="#tax-preparation"
+                  ><span class="check-icon">✔</span> Tax Preparation Services</a
+                >
+              </li>
+              <li>
+                <a href="#accounting-integration"
+                  ><span class="check-icon">✔</span> Accounting System
+                  Integration</a
+                >
+              </li>
+              <li>
+                <a href="#cfo-advisory"
+                  ><span class="check-icon">✔</span> CFO Advisory Services</a
+                >
+              </li>
+              <li>
+                <a href="#accounting-bookkeeping"
+                  ><span class="check-icon">✔</span> Accounting and
+                  Bookkeeping</a
+                >
+              </li>
+              <li>
+                <a href="#data-migration"
+                  ><span class="check-icon">✔</span> Accounting Data
+                  Migration</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="blog.html">Blog</a>
+        <a href="Career.html">Careers</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+      <div class="navbar-button">
+        <a href="#get-quote-form">Get a Quote</a>
+      </div>
+    </div>
+
+    <img class="background-img" src="logo images\blog.jpg" />
+    <div class="img-overlay"></div>
+    <div class="text1">
+      <h1>Our Blog</h1>
+    </div>
+    <br /><br /><br /><br />
+
+    <div class="container80">
+      <div class="card80">
+        <a href="#">
+          <img src="logo images\blog1.jpeg" alt="Card Image" />
+          <div class="dateing"><a href="july.html">6 Jul</a></div>
+        </a>
+        <a href="uncat.html" class="category80">Uncategorized</a> /
+        <a href="admin.html" class="category80"
+          ><span style="margin-left: -35px">admin</span></a
+        >
+        <h2>
+          <a href="#"
+            >The Leader In Global Outsourcing <br />For Accounting Firms</a
+          >
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet,<br />
+          consectetur adipiscing elit, sed do <br />
+          eiusmod tempor incididunt ut labore.
+        </p>
+        <a href="#" class="read-more80"
+          >Read more<i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="card80">
+        <a href="#">
+          <img src="logo images\blog2.jpeg" alt="Card Image" />
+          <div class="dateing"><a href="july.html">6 Jul</a></div>
+        </a>
+        <a href="uncat.html" class="category80">Uncategorized</a> /
+        <a href="admin.html" class="category80"
+          ><span style="margin-left: -35px">admin</span></a
+        >
+        <h2>
+          <a href="#"
+            >The Leader In Global Outsourcing <br />For Accounting Firms</a
+          >
+        </h2>
+        <p>
+          Consectetur adipiscing elit, sed do <br />eiusmod tempor incididunt ut
+          labore <br />et dolore magna aliqua. Ut e
+        </p>
+        <a href="#" class="read-more80"
+          >Read more<i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="card80">
+        <a href="#">
+          <img src="logo images\blog 3.jpeg" alt="Card Image" />
+          <div class="dateing"><a href="july.html">6 Jul</a></div>
+        </a>
+        <a href="uncat.html" class="category80">Uncategorized</a> /
+        <a href="admin.html" class="category80"
+          ><span style="margin-left: -35px">admin</span></a
+        >
+        <h2>
+          <a href="#">A Refresher Course On Share <br />Price Movements </a>
+        </h2>
+        <p>
+          Consectetur adipiscing elit, sed do <br />eiusmod tempor incididunt ut
+          labore <br />et dolore magna aliqua. Ut e
+        </p>
+        <a href="#" class="read-more80"
+          >Read more<i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Background Container -->
+    <div class="background-container">
+      <img
+        src="logo images/istockphoto-1414660747-612x612.jpg"
+        alt="Background Image"
+      />
+      <div class="background-content">
+        <ul>
+          <li><h5>Book a Free Consultation</h5></li>
+        </ul>
+        <h1>Needs Professional Accountant & Tax Service? Contact Us</h1>
+        <p>
+          Feel free to reach out for a consultation, and let us guide you
+          towards financial clarity and success. At Reconcilix, your
+          satisfaction is our priority.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card with Form -->
+    <div class="card">
+      <div class="card-image">
+        <img src="logo images/contact-us.jpg" alt="Contact Us Image" />
+      </div>
+      <div class="card-form" id="get-quote-form">
+        <h2>Contact Us</h2>
+        <form>
+          <div class="form-row">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <i
+              class="fa-solid fa-envelope"
+              style="position: absolute; right: 35px; top: 152px"
+            ></i>
+          </div>
+          <div class="form-row">
+            <input type="tel" placeholder="Phone" />
+            <input type="date" placeholder="Date" />
+          </div>
+          <div class="form-row">
+            <select>
+              <option value="" disabled selected>Select An Option</option>
+              <option value="option1">Select An Option</option>
+              <option value="option2">Bookkeeping</option>
+              <option value="option3">Payroll Services</option>
+              <option value="option2">Tax Planning</option>
+              <option value="option3">Loan Management</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <textarea placeholder="Additional Details"></textarea>
+          </div>
+          <div class="form-row">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br /><br />
+    <footer class="footerkk">
+      <div class="footer-contentkk">
+        <!-- Logo and Text -->
+        <div class="footer-logokk">
+          <img src="logo images/reconsilix-logo-white.png" alt="Logo" />
+        </div>
+        <p>
+          Your trusted partner for seamless tax <br />solutions and expert
+          financial guidance.
+        </p>
+        <!-- Contact Details -->
+        <div class="contact-infokk">
+          <div class="contact-itemkk">
+            <i class="fas fa-location-dot"></i>
+            <span>
+              Canton Center Rd, Canton, MI 48187,<br />
+              <span style="margin-left: 28px">United States</span></span
+            >
+          </div>
+          <div class="contact-itemkk">
+            <i class="fas fa-envelope"></i>
+            <span>support@reconcilix.com</span>
+          </div>
+          <div class="contact-itemkk">
+            <a href="#">
+              <i class="fa fa-phone"></i> <span>(+92) 331 5365 669</span></a
+            >
+            <!-- Replace with your phone number -->
+          </div>
+        </div>
+        <!-- Navigation Links -->
+        <div class="footer-linkskk">
+          <h3>Other Pages</h3>
+          <ul>
+            <li>
+              <a href="index.html"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Home</a
+              >
+            </li>
+            <li>
+              <a href="About.html"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>About</a
+              >
+            </li>
+            <li>
+              <a href="#Services"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i
+                >Services</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Modern
+                Tools</a
+              >
+            </li>
+            <li>
+              <a href="Contact.html"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Contact
+                us</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="quick-linkskk">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Privacy
+                Policy</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Term of
+                Service</a
+              >
+            </li>
+            <li>
+              <a href="blog.html"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>Blog</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i>FAQ</a
+              >
+            </li>
+            <li>
+              <a href="Career.html"
+                ><i class="fa fa-chevron-right" aria-hidden="true"></i
+                >Careers</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="newsletterkk">
+          <h3>Newsletter</h3>
+          <p style="margin-right: 50px">Get the latest news & updates</p>
+          <div class="emailkk">
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="Your Email"
+              required
+            />
+            <i class="fas fa-envelope"></i>
+            <br /><br />
+            <input type="submit" id="submitBtn" value="Submit" />
+            <span id="emailError" class="error-message"></span>
+          </div>
+        </div>
+        <!-- Social Media Icons -->
+        <div class="social-mediakk">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <!-- Footer Bottom -->
+        <div class="footer-bottomkk">
+          <hr />
+          <p>
+            © 2024 Reconcilix Accounting & Tax Services. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <button id="scrollTopBtn" class="scroll-top-btn">&#8679;</button>
+    <script src="java.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
